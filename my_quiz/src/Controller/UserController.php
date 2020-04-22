@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+// use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,7 +24,7 @@ class UserController extends AbstractController
     /**
      * @Route("/register", name="register")
      */
-    public function create(Request $request)
+    public function register_form()
     {
         $user = new User();
         $form = $this->createFormBuilder($user)
