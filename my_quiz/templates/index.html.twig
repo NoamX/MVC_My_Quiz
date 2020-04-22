@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Quiz{% endblock %}</title>
+</head>
+
+<body>
+    {% block body %}
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="{{ path('index') }}">Accueil</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+    {% endblock %}
+</body>
+
+</html>
