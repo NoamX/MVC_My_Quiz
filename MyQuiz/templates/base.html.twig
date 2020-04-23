@@ -12,13 +12,13 @@
 <body>
     <ul class="nav nav-fill">
         <li class="nav-item">
-            <a href="" class="nav-link">Accueil</a>
+            <a href="{{ path('index') }}" class="nav-link">Accueil</a>
         </li>
         <li class="nav-item">
             <a href="" class="nav-link">Se connecter</a>
         </li>
         <li class="nav-item">
-            <a href="" class="nav-link">S'inscrire</a>
+            <a href="{{ path('register') }}" class="nav-link">S'inscrire</a>
         </li>
     </ul>
     {% block body %}{% endblock %}
