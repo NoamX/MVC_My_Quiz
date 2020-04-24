@@ -31,7 +31,7 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe (8 caractères minimum)',
-                'attr' => ['minlenght' => 8],
+                'attr' => ['minlength' => 8],
                 'required' => true,
             ])
             ->add('submit', SubmitType::class, [
@@ -40,15 +40,7 @@ class RegistrationFormType extends AbstractType
         // $builder
         //     ->add('name')
         //     ->add('email')
-        //     ->add('agreeTerms', CheckboxType::class, [
-        //         'mapped' => false,
-        //         'constraints' => [
-        //             new IsTrue([
-        //                 'message' => 'You should agree to our terms.',
-        //             ]),
-        //         ],
-        //     ])
-        //     ->add('plainPassword', PasswordType::class, [
+        //     ->add('password', PasswordType::class, [
         //         // instead of being set onto the object directly,
         //         // this is read and encoded in the controller
         //         'mapped' => false,
@@ -63,6 +55,9 @@ class RegistrationFormType extends AbstractType
         //                 'max' => 4096,
         //             ]),
         //         ],
+        //     ])
+        //     ->add('submit', SubmitType::class, [
+        //         'label' => 'S\'inscrire',
         //     ]);
     }
 

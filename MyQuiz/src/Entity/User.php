@@ -38,6 +38,11 @@ class User implements UserInterface
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $verified_at;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -124,6 +129,18 @@ class User implements UserInterface
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getVerifiedAt(): ?\DateTimeInterface
+    {
+        return $this->verified_at;
+    }
+
+    public function setVerifiedAt(?\DateTimeInterface $verified_at): self
+    {
+        $this->verified_at = $verified_at;
 
         return $this;
     }
