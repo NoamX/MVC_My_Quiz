@@ -30,6 +30,26 @@
         </li>
         {% endif %}
     </ul>
+    {% if categorie is defined %}
+    <div style="margin: 75px auto; width: 50%;">
+        <div class="card">
+            <div class="card-header">
+                <span class="badge badge-primary">
+                    <h3>Quiz</h3>
+                </span>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for categories in categorie %}
+                    <li class="list-group-item">
+                        <a href="#">{{ categories.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endif %}
     {% block body %}{% endblock %}
 </body>
 
