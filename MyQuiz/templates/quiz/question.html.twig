@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div style="margin: 75px auto; width: 50%;">
+    <div class="card">
+        <div class="card-header">
+            <span class="badge badge-primary">
+                <h3>Question</h3>
+            </span>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                {% for questions in question %}
+                <li class="list-group-item">
+                    {{ questions.question }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <br>
+    <a href="{{ path('index') }}"><button class="btn btn-primary">Retour aux catégories</button></a>
+</div>
+{% endblock %}

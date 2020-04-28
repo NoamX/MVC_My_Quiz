@@ -42,7 +42,7 @@
                 <ul class="list-group">
                     {% for categories in categorie %}
                     <li class="list-group-item">
-                        <a href="#">{{ categories.name }}</a>
+                        <a href="{{ path('question', { id: categories.id }) }}">{{ categories.name }}</a>
                     </li>
                     {% endfor %}
                 </ul>
