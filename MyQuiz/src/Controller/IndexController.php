@@ -38,9 +38,9 @@ class IndexController extends AbstractController
         // foreach ($question as $value1) {
         //     echo $value1->getQuestion() . '<br>';
         // }
-        foreach ($reponse as $value2) {
-            echo $value2->getReponse() . ' ';
-        }
+        // foreach ($reponse as $value2) {
+        //     echo $value2->getReponse() . ' ';
+        // }
 
         return $this->render('quiz/question.html.twig', [
             'question' => $question,
