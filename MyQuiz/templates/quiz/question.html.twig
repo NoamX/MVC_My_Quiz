@@ -1,23 +1,37 @@
 {% extends 'base.html.twig' %}
+{% block title %}MyQuiz / Question{% endblock %}
 {% block body %}
 <div style="margin: 75px auto; width: 50%;">
-    <div class="card">
-        <div class="card-header">
-            <span class="badge badge-primary">
-                <h3>Question</h3>
-            </span>
+    <form action="{{ path('reponse') }}" method="POST">
+        <div class="card">
+            <div class="card-header">
+                <span class="badge badge-primary">
+                    <h3>Question</h3>
+                </span>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for questions in question %}
+                    <li class="list-group-item">
+                        <h6>
+                            {{ questions.question }}
+                        </h6>
+                        <hr>
+                        {% for reponses in reponse[questions.id] %}
+                        <p>
+                            <input type="radio" value="{{ reponses.reponse }}" name="question-{{ questions.id }}">
+                            <label>{{ reponses.reponse }}</label>
+                        </p>
+                        {% endfor %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                <br>
+                <button class="btn btn-primary" type="submit">Confirmer</button>
+            </div>
         </div>
-        <div class="card-body">
-            <ul class="list-group">
-                {% for questions in question %}
-                <li class="list-group-item">
-                    {{ questions.question }}
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-    <br>
+        <br>
+    </form>
     <a href="{{ path('index') }}"><button class="btn btn-primary">Retour aux catégories</button></a>
 </div>
 {% endblock %}

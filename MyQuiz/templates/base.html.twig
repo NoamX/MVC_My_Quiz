@@ -43,13 +43,16 @@
                     {% for categories in categorie %}
                     <li class="list-group-item">
                         <a href="{{ path('question', { id: categories.id }) }}">{{ categories.name }}</a>
+
                     </li>
                     {% endfor %}
+
                 </ul>
             </div>
         </div>
     </div>
     {% endif %}
+    
     {% block body %}{% endblock %}
 </body>
 
