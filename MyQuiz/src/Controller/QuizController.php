@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class IndexController extends AbstractController
+class QuizController extends AbstractController
 {
     /**
      * @Route("/", name="index")
@@ -53,28 +53,28 @@ class IndexController extends AbstractController
             $req[$key] = trim(stripslashes(htmlspecialchars($value)));
         }
 
-        $reponse = $reponseRepository->findBy(['id_question' => $id]);
-
         $question = $questionRepository->findBy(['id_categorie' => $id]);
         $reponse = [];
         foreach ($question as $value) {
             $reponse[$value->getId()] = $reponseRepository->findBy(['id_question' => $value->getId()]);
         }
 
-        // echo '<pre>';
-        // var_dump($reponse);
-        // echo '</pre>';
-
         foreach ($reponse as $value) {
             foreach ($value as $reponse) {
                 if ($reponse->getReponseExpected()) {
-                    echo $reponse->getReponse();
-                    echo ' - ';
-                    echo $reponse->getReponseExpected();
-                    echo '<br>';
+                    $rep[] = $reponse->getReponse();
                 }
             }
         }
+
+        echo '<pre>';
+        echo 'Reponse Utilisateur :<br>';
+        print_r($req);
+        echo 'Reponse Attendue :<br>';
+        print_r($rep);
+        $res = array_diff($req, $rep);
+        print_r($res);
+        echo '</pre>';
 
         return $this->render('quiz/reponse.html.twig', [
             'request' => $req,
