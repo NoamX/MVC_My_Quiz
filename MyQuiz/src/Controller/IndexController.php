@@ -29,6 +29,7 @@ class IndexController extends AbstractController
      */
     public function showQuestion(QuestionRepository $questionRepository, ReponseRepository $reponseRepository, $id)
     {
+
         $question = $questionRepository->findBy(['id_categorie' => $id]);
 
         $reponse = [];
@@ -39,16 +40,40 @@ class IndexController extends AbstractController
         return $this->render('quiz/question.html.twig', [
             'question' => $question,
             'reponse' => $reponse,
+            'id' => $id,
         ]);
     }
 
     /**
-     * @Route("/reponse", name="reponse", methods={"GET", "POST"})
+     * @Route("/reponse/{id}", name="reponse", methods={"GET", "POST"})
      */
-    public function checkReponse(Request $request)
+    public function checkReponse(QuestionRepository $questionRepository, ReponseRepository $reponseRepository, Request $request, $id)
     {
         foreach ($request->request as $key => $value) {
             $req[$key] = trim(stripslashes(htmlspecialchars($value)));
+        }
+
+        $reponse = $reponseRepository->findBy(['id_question' => $id]);
+
+        $question = $questionRepository->findBy(['id_categorie' => $id]);
+        $reponse = [];
+        foreach ($question as $value) {
+            $reponse[$value->getId()] = $reponseRepository->findBy(['id_question' => $value->getId()]);
+        }
+
+        // echo '<pre>';
+        // var_dump($reponse);
+        // echo '</pre>';
+
+        foreach ($reponse as $value) {
+            foreach ($value as $reponse) {
+                if ($reponse->getReponseExpected()) {
+                    echo $reponse->getReponse();
+                    echo ' - ';
+                    echo $reponse->getReponseExpected();
+                    echo '<br>';
+                }
+            }
         }
 
         return $this->render('quiz/reponse.html.twig', [
