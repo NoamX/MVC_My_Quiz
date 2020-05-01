@@ -14,9 +14,9 @@ class QuizController extends AbstractController
     /**
      * @Route("/", name="index")
      */
-    public function index(CategorieRepository $repository)
+    public function index(CategorieRepository $categorieRepository)
     {
-        $categorie = $repository->findAll();
+        $categorie = $categorieRepository->findAll();
 
         return $this->render('base.html.twig', [
             'user' => $this->getUser(),
@@ -67,17 +67,27 @@ class QuizController extends AbstractController
             }
         }
 
-        echo '<pre>';
-        echo 'Reponse Utilisateur :<br>';
-        print_r($req);
-        echo 'Reponse Attendue :<br>';
-        print_r($rep);
+        // echo '<pre>';
+        // echo 'Reponse Utilisateur :<br>';
+        // print_r($req);
+        // echo 'Reponse Attendue :<br>';
+        // print_r($rep);
+        // echo 'Mauvaise(s) Reponse Utilisateur :<br>';
         $res = array_diff($req, $rep);
-        print_r($res);
-        echo '</pre>';
+        // print_r($res);
+        // echo 'Bonne Reponse(s) :<br>';
+        $res2 = array_diff($rep, $req);
+        // print_r($res2);
+        // echo '</pre>';
+
+        $total = count($question) - count($res);
 
         return $this->render('quiz/reponse.html.twig', [
             'request' => $req,
+            'bad_reponse' => $res,
+            'reponse_expected' => $res2,
+            'nbrQuestion' => count($question),
+            'total' => $total,
         ]);
     }
 }
