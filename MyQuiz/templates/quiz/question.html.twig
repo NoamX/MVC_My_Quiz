@@ -19,7 +19,7 @@
                         <hr>
                         {% for reponses in reponse[questions.id] %}
                         <p>
-                            <input type="radio" value="{{ reponses.reponse }}" name="question-{{ questions.id }}"
+                            <input type="radio" value="{{ reponses.reponse }}" name="{{ questions.id }}"
                                 required>
                             <label>{{ reponses.reponse }}</label>
                         </p>
