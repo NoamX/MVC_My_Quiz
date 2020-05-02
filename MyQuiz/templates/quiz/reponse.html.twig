@@ -14,6 +14,12 @@
                     Mauvaise(s) réponse(s) :
                 </div>
                 <div class="card-body">
+                    {% for value in question %}
+                    <p>
+                        {{ value.question }}
+                    </p>
+                    {% endfor %}
+                    <hr>
                     {% for reponse in bad_reponse %}
                     <p>
                         {{ reponse }}

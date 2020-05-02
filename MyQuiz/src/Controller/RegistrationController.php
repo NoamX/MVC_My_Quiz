@@ -36,29 +36,26 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // do anything else you need here, like send an email
+
             // TEST E-MAIL
 
-            $user = $security->getUser();
+            $recipient = $form->get('email')->getData();
 
-            if ($user) {
+            $message = (new \Swift_Message('Vérifier votre adresse e-mail'))
+                ->setFrom('myquiz@verify.com')
+                ->setTo($recipient)
+                ->setBody(
+                    $this->renderView(
+                        'base.html.twig',
+                    ),
+                    'text/html'
+                );
 
-                $recipient = $user->getEmail();
-
-                $message = (new \Swift_Message('Vérifier votre adresse e-mail'))
-                    ->setFrom('myquiz@verify.com')
-                    ->setTo($recipient)
-                    ->setBody(
-                        $this->renderView(
-                            'base.html.twig',
-                        ),
-                        'text/html'
-                    );
-
-                $mailer->send($message);
-            }
+            $mailer->send($message);
 
             return $this->redirectToRoute('app_login');
         }
+
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
             'user' => $this->getUser(),
