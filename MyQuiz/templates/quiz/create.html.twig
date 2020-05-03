@@ -1,0 +1,231 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+{% if app.user %}
+<div style="margin: 75px auto; width: 50%;">
+    <div class="card">
+        <div class="card-header">
+            <span class="badge badge-primary">
+                <h3>Créer un quiz</h3>
+            </span>
+        </div>
+        <div class="card-body">
+            <form action="{{ path('quiz_create') }}" method="post">
+                <div class="form-group">
+                    <label>Choisissez une catégorie</label>
+                    <select class="form-control" name="categorie">
+                        {% for categorie in categories %}
+                        <option value="{{ categorie.id }}">{{ categorie.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <p>
+                        Vos questions :
+                    </p>
+                    <p>
+                        <input type="text" name="question1" class="form-control" required>
+                        <br>
+                        <label>Vos réponses (Cochez la bonne réponse)</label>
+                        <div class="row flex">
+                            <div class="col">
+                                <input type="radio" name="radio1" required>
+                                <input type="text" class="form-control" name="reponse1-1" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio1" required>
+                                <input type="text" class="form-control" name="reponse1-2" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio1" required>
+                                <input type="text" class="form-control" name="reponse1-3" required>
+                            </div>
+                        </div>
+                    </p>
+                    <hr>
+                    <p>
+                        <input type="text" name="question2" class="form-control" required>
+                        <br>
+                        <label>Vos réponses (Cochez la bonne réponse)</label>
+                        <div class="row flex">
+                            <div class="col">
+                                <input type="radio" name="radio2" required>
+                                <input type="text" class="form-control" name="reponse2-1" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio2" required>
+                                <input type="text" class="form-control" name="reponse2-2" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio2" required>
+                                <input type="text" class="form-control" name="reponse2-3" required>
+                            </div>
+                        </div>
+                    </p>
+                    <hr>
+                    <p>
+                        <input type="text" name="question3" class="form-control" required>
+                        <br>
+                        <label>Vos réponses (Cochez la bonne réponse)</label>
+                        <div class="row flex">
+                            <div class="col">
+                                <input type="radio" name="radio3" required>
+                                <input type="text" class="form-control" name="reponse3-1" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio3" required>
+                                <input type="text" class="form-control" name="reponse3-2" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio3" required>
+                                <input type="text" class="form-control" name="reponse3-3" required>
+                            </div>
+                        </div>
+                    </p>
+                    <hr>
+                    <p>
+                        <input type="text" name="question4" class="form-control" required>
+                        <br>
+                        <label>Vos réponses (Cochez la bonne réponse)</label>
+                        <div class="row flex">
+                            <div class="col">
+                                <input type="radio" name="radio4" required>
+                                <input type="text" class="form-control" name="reponse4-1" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio4" required>
+                                <input type="text" class="form-control" name="reponse4-2" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio4" required>
+                                <input type="text" class="form-control" name="reponse4-3" required>
+                            </div>
+                        </div>
+                    </p>
+                    <hr>
+                    <p>
+                        <input type="text" name="question5" class="form-control" required>
+                        <br>
+                        <label>Vos réponses (Cochez la bonne réponse)</label>
+                        <div class="row flex">
+                            <div class="col">
+                                <input type="radio" name="radio5" required>
+                                <input type="text" class="form-control" name="reponse5-1" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio5" required>
+                                <input type="text" class="form-control" name="reponse5-2" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio5" required>
+                                <input type="text" class="form-control" name="reponse5-3" required>
+                            </div>
+                        </div>
+                    </p>
+                    <hr>
+                    <p>
+                        <input type="text" name="question6" class="form-control" required>
+                        <br>
+                        <label>Vos réponses (Cochez la bonne réponse)</label>
+                        <div class="row flex">
+                            <div class="col">
+                                <input type="radio" name="radio6" required>
+                                <input type="text" class="form-control" name="reponse6-1" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio6" required>
+                                <input type="text" class="form-control" name="reponse6-2" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio6" required>
+                                <input type="text" class="form-control" name="reponse6-3" required>
+                            </div>
+                        </div>
+                    </p>
+                    <hr>
+                    <p>
+                        <input type="text" name="question7" class="form-control" required>
+                        <br>
+                        <label>Vos réponses (Cochez la bonne réponse)</label>
+                        <div class="row flex">
+                            <div class="col">
+                                <input type="radio" name="radio7" required>
+                                <input type="text" class="form-control" name="reponse7-1" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio7" required>
+                                <input type="text" class="form-control" name="reponse7-2" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio7" required>
+                                <input type="text" class="form-control" name="reponse7-3" required>
+                            </div>
+                        </div>
+                    </p>
+                    <hr>
+                    <p>
+                        <input type="text" name="question8" class="form-control" required>
+                        <br>
+                        <label>Vos réponses (Cochez la bonne réponse)</label>
+                        <div class="row flex">
+                            <div class="col">
+                                <input type="radio" name="radio8" required>
+                                <input type="text" class="form-control" name="reponse8-1" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio8" required>
+                                <input type="text" class="form-control" name="reponse8-2" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio8" required>
+                                <input type="text" class="form-control" name="reponse8-3" required>
+                            </div>
+                        </div>
+                    </p>
+                    <hr>
+                    <p>
+                        <input type="text" name="question9" class="form-control" required>
+                        <br>
+                        <label>Vos réponses (Cochez la bonne réponse)</label>
+                        <div class="row flex">
+                            <div class="col">
+                                <input type="radio" name="radio9" required>
+                                <input type="text" class="form-control" name="reponse9-1" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio9" required>
+                                <input type="text" class="form-control" name="reponse9-2" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio9" required>
+                                <input type="text" class="form-control" name="reponse9-3" required>
+                            </div>
+                        </div>
+                    </p>
+                    <hr>
+                    <p>
+                        <input type="text" name="question10" class="form-control" required>
+                        <br>
+                        <label>Vos réponses (Cochez la bonne réponse)</label>
+                        <div class="row flex">
+                            <div class="col">
+                                <input type="radio" name="radio10" required>
+                                <input type="text" class="form-control" name="reponse10-1" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio10" required>
+                                <input type="text" class="form-control" name="reponse10-2" required>
+                            </div>
+                            <div class="col">
+                                <input type="radio" name="radio10" required>
+                                <input type="text" class="form-control" name="reponse10-3" required>
+                            </div>
+                        </div>
+                    </p>
+                    <br>
+                    <button class="btn btn-primary">Créer un quiz</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

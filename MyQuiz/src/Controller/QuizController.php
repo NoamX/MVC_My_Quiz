@@ -25,7 +25,7 @@ class QuizController extends AbstractController
     }
 
     /**
-     * @Route("/question/{id}", name="question")
+     * @Route("/quiz/question/{id}", name="question")
      */
     public function showQuestion(QuestionRepository $questionRepository, ReponseRepository $reponseRepository, $id)
     {
@@ -45,7 +45,7 @@ class QuizController extends AbstractController
     }
 
     /**
-     * @Route("/reponse/{id}", name="reponse", methods={"GET", "POST"})
+     * @Route("/quiz/reponse/{id}", name="reponse", methods={"GET", "POST"})
      */
     public function checkReponse(QuestionRepository $questionRepository, ReponseRepository $reponseRepository, Request $request, $id)
     {
@@ -75,9 +75,9 @@ class QuizController extends AbstractController
         }
 
         $abc = [];
-        foreach ($test as $key => $value) {
+        foreach ($test as $value) {
             foreach ($value as $q) {
-                $abc[$key] = $q;
+                $abc[] = $q;
             }
         }
 
@@ -90,6 +90,22 @@ class QuizController extends AbstractController
             'reponse_expected' => $res2,
             'nbrQuestion' => count($question),
             'total' => $total,
+        ]);
+    }
+
+    /**
+     * @Route("quiz/create", name="quiz_create")
+     */
+    public function createQuiz(CategorieRepository $categorieRepository, Request $request)
+    {
+        $categories = $categorieRepository->findAll();
+
+        foreach ($request->request as $key => $value) {
+            echo "$key => $value<br>";
+        }
+
+        return $this->render('quiz/create.html.twig', [
+            'categories' => $categories,
         ]);
     }
 }
